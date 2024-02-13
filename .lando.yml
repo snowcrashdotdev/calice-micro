@@ -1,0 +1,23 @@
+name: calice-micro
+services:
+  tooling:
+    type: node:18
+    build_as_root:
+      - corepack enable
+    overrides:
+      image: node:20
+  gateway:
+    type: node:18
+    build_as_root:
+      - corepack enable
+    build:
+      - pnpm install
+    command: pnpm --filter=calice-gateway dev
+    overrides:
+      image: node:20
+tooling:
+  pnpm:
+    service: tooling
+proxy:
+  gateway:
+    - api.calicemicro.lndo.site:3000

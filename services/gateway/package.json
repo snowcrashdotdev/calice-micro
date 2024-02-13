@@ -1,0 +1,25 @@
+{
+  "name": "calice-gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node-dev --exit-child src/index.ts",
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "Snow Crash",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "20.11.17",
+    "ts-node": "10.9.2",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "10.0.2",
+    "fastify": "4.26.1",
+    "graphql": "16.8.1",
+    "graphql-import-node": "0.0.5"
+  }
+}
