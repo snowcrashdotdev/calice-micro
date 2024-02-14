@@ -1,30 +1,24 @@
 {
-  "name": "@calice/gateway",
+  "name": "@calice/tournament",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --exit-child src/index.ts",
     "start": "ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Snow Crash",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/amqplib": "0.10.4",
     "@types/node": "20.11.17",
-    "@types/uuid": "9.0.8",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "amqplib": "0.10.3",
-    "fastify": "4.26.1",
-    "graphql": "16.8.1",
-    "mercurius": "13.3.3",
-    "mercurius-codegen": "5.0.4",
-    "uuid": "9.0.1"
+    "amqplib": "0.10.3"
   }
 }

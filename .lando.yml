@@ -4,20 +4,45 @@ services:
     type: node:18
     build_as_root:
       - corepack enable
+    build:
+      - pnpm install
     overrides:
       image: node:20
+  message-queue:
+    api: 3
+    type: lando
+    services:
+      image: rabbitmq:3.12-management
+      ports:
+        - '15672'
+        - '5672'
+      command: rabbitmq-server
+    healthcheck:
+      command: rabbitmq-diagnostics -q ping
   gateway:
     type: node:18
     build_as_root:
       - corepack enable
-    build:
-      - pnpm install
-    command: pnpm --filter=calice-gateway dev
+    command: pnpm --filter=@calice/gateway dev
     overrides:
       image: node:20
+      environment:
+        AMQP_URI: amqp://guest:guest@message-queue
+  tournament:
+    type: node:18
+    scanner: false
+    build_as_root:
+      - corepack enable
+    command: pnpm --filter=@calice/tournament dev
+    overrides:
+      image: node:20
+      environment:
+        AMQP_URI: amqp://guest:guest@message-queue
 tooling:
   pnpm:
     service: tooling
 proxy:
   gateway:
-    - api.calicemicro.lndo.site:3000
+    - api.calicemicro.lndo.site
+  message-queue:
+    - mq.calicemicro.lndo.site:15672
